@@ -32,10 +32,6 @@ exports.default = async (req, res) => {
             .retrieveByCartId(cartId)
             .catch(() => undefined);
         switch (event) {
-            case "payment.authorized":
-                if (!order) {
-                    await orderService.completeOrder(cartId);
-                }
             case "payment.failed":
                 if (order) {
                     await orderService.update(order.id, {
@@ -50,6 +46,7 @@ exports.default = async (req, res) => {
                     await orderService.capturePayment(order.id);
                 }
                 else {
+                    logger.warn(`Razorpay webhook received for an order that is not yet created in Medusa: ${order === null || order === void 0 ? void 0 : order.id}`);
                     return res.sendStatus(404);
                 }
                 break;
