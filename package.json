@@ -1,14 +1,17 @@
 {
   "name": "medusa-razorpay-webhook",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Listen to Razorpay webhooks and update order status",
   "author": "Rohit",
   "license": "MIT",
   "keywords": [
     "medusa",
+    "medusa-plugin-payment",
     "medusa-plugin-razorpay-webhook"
   ],
   "repository": {
+    "type": "git",
+    "url": "git@https://github.com/Rohit3523/medusa-razorpay-webhook"
   },
   "scripts": {
     "clean": "cross-env ./node_modules/.bin/rimraf dist",
