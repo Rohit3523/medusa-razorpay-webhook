@@ -16,7 +16,6 @@ exports.default = async (req, res) => {
     try {
         const body = Buffer.isBuffer(req.body) ? JSON.parse(req.body.toString('utf-8')) : req.body;
         logger.info(`Received Razorpay: ${JSON.stringify(body)}`);
-        await wait(30000);
         const validationResponse = razorpay_1.default.validateWebhookSignature(JSON.stringify(body), webhookSignature, webhookSecret);
         if (!validationResponse) {
             res.sendStatus(400);
@@ -63,8 +62,3 @@ exports.default = async (req, res) => {
         return;
     }
 };
-async function wait(ms) {
-    return new Promise((resolve) => {
-        setTimeout(resolve, ms);
-    });
-}

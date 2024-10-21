@@ -17,8 +17,6 @@ export default async (req: MedusaRequest, res: MedusaResponse) => {
 
         logger.info(`Received Razorpay: ${JSON.stringify(body)}`);
 
-        await wait(30000);
-
         const validationResponse = Razorpay.validateWebhookSignature(
             JSON.stringify(body),
             webhookSignature,
@@ -78,9 +76,3 @@ export default async (req: MedusaRequest, res: MedusaResponse) => {
         return;
     }
 };
-
-async function wait(ms: number) {
-    return new Promise((resolve) => {
-        setTimeout(resolve, ms);
-    });
-}
