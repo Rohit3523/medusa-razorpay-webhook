@@ -11,8 +11,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@https://github.com/Rohit3523/medusa-razorpay-webhook"
+    "url": "https://github.com/Rohit3523/medusa-razorpay-webhook.git"
   },
+  "bugs": {
+    "url": "https://github.com/Rohit3523/medusa-razorpay-webhook/issues"
+  },
+  "homepage": "https://github.com/Rohit3523/medusa-razorpay-webhook#readme",
   "scripts": {
     "clean": "cross-env ./node_modules/.bin/rimraf dist",
     "build:server": "cross-env npm run clean && tsc -p tsconfig.server.json",
