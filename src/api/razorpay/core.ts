@@ -43,11 +43,6 @@ export default async (req: MedusaRequest, res: MedusaResponse) => {
             .catch(() => undefined);
 
         switch (event) {
-            case "payment.authorized":
-                if (!order) {
-                    await orderService.completeOrder(cartId);
-                }
-
             case "payment.failed":
                 if (order) {
                     await orderService.update(order.id, {
@@ -62,6 +57,9 @@ export default async (req: MedusaRequest, res: MedusaResponse) => {
                 if (order && order.payment_status !== "captured") {
                     await orderService.capturePayment(order.id);
                 } else {
+                    logger.warn(
+                        `Razorpay webhook received for an order that is not yet created in Medusa: ${order?.id}`
+                    );
                     return res.sendStatus(404);
                 }
                 break;
