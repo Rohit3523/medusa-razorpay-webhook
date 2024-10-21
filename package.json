@@ -1,6 +1,6 @@
 {
   "name": "medusa-razorpay-webhook",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Listen to Razorpay webhooks and update order status",
   "author": "Rohit",
   "license": "MIT",
