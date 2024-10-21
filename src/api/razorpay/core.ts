@@ -17,7 +17,7 @@ export default async (req: MedusaRequest, res: MedusaResponse) => {
 
         logger.info(`Received Razorpay: ${JSON.stringify(body)}`);
 
-        await wait(15000);
+        await wait(30000);
 
         const validationResponse = Razorpay.validateWebhookSignature(
             JSON.stringify(body),
